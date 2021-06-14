@@ -1,5 +1,3 @@
-call plug#begin('~/.config/nvim/autoload/plugged')
-
 "syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
@@ -63,5 +61,3 @@ Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
 "HTML
 Plug 'mattn/emmet-vim'
 
-
-call plug#end()

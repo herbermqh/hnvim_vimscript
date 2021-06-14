@@ -1,6 +1,15 @@
-cd /home/userh/Documents/LaTeX
-source $HOME/.config/nvim/vim-plug/plugins.vim
-
+if has('win32')
+  call plug#begin('~/AppData/Local/nvim/autoload/plugged')
+    source ~/AppData/Local/nvim/vim-plug/plugins.vim
+  call plug#end()
+  cd C:\Users\userh\Documents\LaTeX
+else
+  cd /home/userh/Documents/LaTeX
+  call plug#begin('~/.config/nvim/autoload/plugged')
+    source $HOME/.config/nvim/vim-plug/plugins.vim
+  call plug#end()
+endif
+  
 "CONFIGURACIONES GENERALES DE VIM
 "---------------funcionamiento general
 "detecta tipo de archivo 
@@ -100,14 +109,13 @@ let g:Tex_CompileRule_pdf = 'latexmk -interaction=nonstopmode -pdflatex -shell-e
 "----------------configuration vimtex
 let g:vimtex_syntax_enabled = 1
 let g:vimtex_quickfix_open_on_warning = 0
-"let g:xwindow_id = system('xdotool getactivewindow')
-let g:vimtex_view_method = 'zathura'
+let g:xwindow_id = system('xdotool getactivewindow')
+let g:vimtex_view_method = 'general'
 "let g:vimtex_view_zathura_hook_view = 'MyHook'
 "let g:vimtex_view_zathura_hook_callback = 'MyHook'
-
-"function! MyHook()
-"  silent call system('xdotool windowactivate ' . g:xwindow_id . ' --sync')
-"endfunction
+function! MyHook()
+  silent call system('xdotool windowactivate ' . g:xwindow_id . ' --sync')
+endfunction
 
 "----------------configuration de NERDTree
 "abrir neerd tree
