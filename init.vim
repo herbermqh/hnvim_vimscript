@@ -28,6 +28,7 @@ set showcmd
 set number
 set relativenumber
 set showmatch
+set nocompatible
 "colorear el sintaxis del codigo
 syntax on
 let g:monokai_term_italic = 1

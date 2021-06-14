@@ -58,8 +58,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'arzg/vim-colors-xcode'
 "Plug 'Yggdroot/indentLine'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
-
-
+Plug 'windwp/nvim-autopairs'
 
 "HTML
 Plug 'mattn/emmet-vim'
