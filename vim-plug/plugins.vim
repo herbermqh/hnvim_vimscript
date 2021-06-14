@@ -27,7 +27,8 @@ Plug 'christoomey/vim-tmux-navigator'
 "LaTeX
 Plug 'herbermqh/vim-latex'
 Plug 'lervag/vimtex'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+"Plug 'herbermqh/vimtex'
+"Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
 " no ordenado
 "Plug 'vim-airline/vim-airline'
@@ -59,6 +60,8 @@ Plug 'crusoexia/vim-monokai'
 Plug 'arzg/vim-colors-xcode'
 "Plug 'Yggdroot/indentLine'
 Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
+
+
 
 "HTML
 Plug 'mattn/emmet-vim'

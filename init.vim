@@ -21,10 +21,10 @@ set relativenumber
 set showmatch
 "colorear el sintaxis del codigo
 syntax on
-"let g:monokai_term_italic = 1
-"let g:monokai_gui_italic = 1
+let g:monokai_term_italic = 1
+let g:monokai_gui_italic = 1
 
-"set t_Co=256
+set t_Co=256
 
 "hi Search ctermbg=13 "color de resaltado de busqueda
 "hi Search ctermfg=0
@@ -77,6 +77,8 @@ map fco :Commits<CR>
 map fh :History/<CR>
 "Ranger
 map ra :Ranger<CR>
+
+
 "CONFIGURACIONES DE PLUGING
 "----------------latex preview
 "let g:livepreview_previewer = ''
@@ -96,6 +98,8 @@ set grepprg=grep\ -nH\ $*
 let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -interaction=nonstopmode -pdflatex -shell-escape $*' "sin interaccion (articles)
 "let g:Tex_CompileRule_pdf = 'latexmk  -pdflatex -shell-escape $*' "con interaccion en consolo (books)
+imap<C-j><Plug>IMAP_JumpForward
+
 
 "----------------configuration vimtex
 let g:vimtex_syntax_enabled = 1
