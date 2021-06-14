@@ -9,7 +9,7 @@ else
     source $HOME/.config/nvim/vim-plug/plugins.vim
   call plug#end()
 endif
-  
+
 "CONFIGURACIONES GENERALES DE VIM
 "---------------funcionamiento general
 "detecta tipo de archivo 
@@ -115,7 +115,7 @@ imap<C-j><Plug>IMAP_JumpForward
 let g:vimtex_syntax_enabled = 1
 let g:vimtex_quickfix_open_on_warning = 0
 let g:xwindow_id = system('xdotool getactivewindow')
-let g:vimtex_view_method = 'general'
+let g:vimtex_view_method = 'zathura'
 "let g:vimtex_view_zathura_hook_view = 'MyHook'
 "let g:vimtex_view_zathura_hook_callback = 'MyHook'
 function! MyHook()
