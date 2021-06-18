@@ -20,7 +20,7 @@ let g:Imap_UsePlaceHolders = 0
 set mouse=a
 
 runtime plugins/spellfile.vim
-"set spell spelllang=es,en_us 
+set spell spelllang=es,en_us 
 set spellfile=~/.vim/dict.add
 "---------------visualizacion
 set showcmd
@@ -54,6 +54,7 @@ filetype indent on
 set sw=2
 "labels
 set iskeyword+=:
+set cursorcolumn
 set cursorline
 set expandtab 
 set shiftwidth=2 
@@ -76,8 +77,8 @@ map <A-U> gewvgUwb
 map <A-u> gewvguwb
 
 "autoguardado
-let g:auto_save = 1
-let g:auto_save_silent = 1
+let g:auto_save = 0
+let g:auto_save_silent = 0
 
 "FZF
 map ff :Files<CR>
@@ -88,9 +89,10 @@ map fh :History/<CR>
 "Ranger
 map ra :Ranger<CR>
 
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'tex']
+
 
 "CONFIGURACIONES DE PLUGING
-"----------------latex preview
 "let g:livepreview_previewer = ''
 "let g:livepreview_engine = 'your_engine' . ' [options]'
 
@@ -114,13 +116,13 @@ imap<C-j><Plug>IMAP_JumpForward
 "----------------configuration vimtex
 let g:vimtex_syntax_enabled = 1
 let g:vimtex_quickfix_open_on_warning = 0
-let g:xwindow_id = system('xdotool getactivewindow')
+" let g:xwindow_id = system('xdotool getactivewindow')
 let g:vimtex_view_method = 'zathura'
-"let g:vimtex_view_zathura_hook_view = 'MyHook'
-"let g:vimtex_view_zathura_hook_callback = 'MyHook'
-function! MyHook()
-  silent call system('xdotool windowactivate ' . g:xwindow_id . ' --sync')
-endfunction
+" let g:vimtex_view_zathura_hook_view = 'MyHook'
+" let g:vimtex_view_zathura_hook_callback = 'MyHook'
+" function! MyHook()
+  " silent call system('xdotool windowactivate ' . g:xwindow_id . ' --sync')
+" endfunction
 
 "----------------configuration de NERDTree
 "abrir neerd tree
@@ -392,11 +394,14 @@ let g:indentLine_char = '┊'
 
 
 "------------------tex conceal
-let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
-let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
-let g:tex_conceal_frac=1
-set conceallevel=2
-let g:tex_conceal="abdgm"
+"let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+"let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
+"let g:tex_conceal_frac=1
+"set conceallevel=2
+"let g:tex_conceal="abdgm"
+
+
+
 
 
 

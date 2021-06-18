@@ -27,6 +27,7 @@ Plug 'herbermqh/vim-latex'
 Plug 'lervag/vimtex'
 "Plug 'herbermqh/vimtex'
 "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+"Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
 
 " no ordenado
 "Plug 'vim-airline/vim-airline'
@@ -52,13 +53,20 @@ Plug 'janko-m/vim-test'
 Plug 'frazrepo/vim-rainbow' " -colorea parentesis
 "Plug 'luochen1990/rainbow'
 Plug 'micha/vim-colors-solarized'
-Plug 'terryma/vim-multiple-cursors' "multiples cursores
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'vim-scripts/vim-auto-save'
 Plug 'crusoexia/vim-monokai'
 Plug 'arzg/vim-colors-xcode'
 "Plug 'Yggdroot/indentLine'
-Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
 Plug 'windwp/nvim-autopairs'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+
+"Git
+Plug 'tpope/vim-fugitive'
+
+"comentarios
+Plug 'tpope/vim-commentary'
 
 "HTML
 Plug 'mattn/emmet-vim'
