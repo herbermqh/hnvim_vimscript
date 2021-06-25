@@ -35,7 +35,6 @@ let g:monokai_term_italic = 1
 let g:monokai_gui_italic = 1
 
 set t_Co=256
-let g:nvcode_termcolors=256
 
 "hi Search ctermbg=13 "color de resaltado de busqueda
 "hi Search ctermfg=0
@@ -76,7 +75,6 @@ map ld :t.<CR>$
 "poner en mayuscula la primera Letra
 map <A-U> gewvgUwb
 map <A-u> gewvguwb
-nmap q :x <CR>
 
 "autoguardado
 let g:auto_save = 0
@@ -90,6 +88,10 @@ map fco :Commits<CR>
 map fh :History/<CR>
 "Ranger
 map ra :Ranger<CR>
+nmap q :x <CR>
+nmap Q :q! <CR>
+
+
 
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'tex']
 
@@ -100,10 +102,10 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'tex']
 
 "----------------latex-suite
 "configuracion general
-":nmap <F12> <esc>:w!<cr>\ll "compilar LaTeX
-:nmap <F8> <esc>]sz= "busca error ortografico 
-:imap <F10> <esc>:w!<cr> "guardar documento TeX
-:map <F10> <esc>:w!<cr> "guarda y se va al main TeX
+"nmap <F12> <esc>:w!<cr>\ll "compilar LaTeX
+nmap <F8> <esc>]sz= "busca error ortografico 
+imap <F10> <esc>:w!<cr> "guardar documento TeX
+map <F10> <esc>:w!<cr> "guarda y se va al main TeX
 ":imap <F6> <esc>:w!<cr><C-W>W
 "personalizacion de macros
 
@@ -288,21 +290,21 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+"nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
 " Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+"nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
 " Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+"nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 " Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+"nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 " Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+"nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+"nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 " Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+"nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+"nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " mis configuraciones
 
 "----------------configuration syntastic
@@ -410,6 +412,7 @@ let g:maplocalleader = ','
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
 nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
 
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
 " Create map to add keys to
 let g:which_key_map =  {}
@@ -474,6 +477,27 @@ let g:which_key_map.s = {
 
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
+" pestañas
+nmap <C-Right> :tabnext <CR>
+nmap <C-Left> :tabprevious <CR>
+nmap <C-k> :tabnext <CR>
+nmap <C-j> :tabprevious <CR>
+
+let g:which_key_map.b = {
+  \ 'name'  :   'buffers',
+  \ 'n'    :[':tabnew'         , 'newtab'],
+  \ 'b'    :[':Buffers'       , 'buffers'],
+  \ '1'    :['1gt'            , 'pestaña 1'],
+  \ '2'    :['2gt'            , 'pestaña 2'],
+  \ '3'    :['3gt'            , 'pestaña 3'],
+  \ '4'    :['4gt'            , 'pestaña 4'],
+  \ '5'    :['5gt'            , 'pestaña 5'],
+  \ '6'    :['6gt'            , 'pestaña 6'],
+  \ '7'    :['7gt'            , 'pestaña 7'],
+  \ '8'    :['8gt'            , 'pestaña 8'],
+  \ '9'    :['9gt'            , 'pestaña 9'],
+  \ }
+
 
 
 "------------------floaterm
@@ -505,12 +529,4 @@ let g:which_key_map.t = {
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
 
-"-----------------------lazygit
-let g:lazygit_floating_window_winblend = 0 " transparency of floating window
-let g:lazygit_floating_window_scaling_factor = 0.9 " scaling factor for floating window
-let g:lazygit_floating_window_corner_chars = ['╭', '╮', '╰', '╯'] " customize lazygit popup window corner characters
-let g:lazygit_floating_window_use_plenary = 0 " use plenary.nvim to manage floating window if available
-let g:lazygit_use_neovim_remote = 1 " fallback to 0 if neovim-remote is not installed
-" setup mapping to call :LazyGit
-nnoremap <silent> <leader>lg :LazyGit<CR>
 

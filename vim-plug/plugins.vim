@@ -77,5 +77,4 @@ Plug 'liuchengxu/vim-which-key'
 Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
-
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
