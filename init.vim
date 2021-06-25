@@ -47,6 +47,13 @@ set termguicolors
 "color desert
 hi! Normal ctermbg=NONE guibg=NONE
 hi! NonText ctermbg=NONE guibg=NONE
+
+"color tabs
+hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+hi TabLine ctermfg=Blue ctermbg=Yellow
+hi TabLineSel ctermfg=Red ctermbg=Yellow
+hi Title ctermfg=LightBlue ctermbg=Magenta
+
 "---------------sangrado y saltos de lineas
 "sangria automatica
 filetype indent on
@@ -528,5 +535,38 @@ let g:which_key_map.t = {
       \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
+
+"--------------------dashboard
+let g:dashboard_default_executive ='clap'
+
+let g:dashboard_custom_header = [
+\ '██╗  ██╗    ███████╗    ██████╗     ███████╗    ██████╗ ', 
+\ '██║  ██║    ██╔════╝    ██╔══██╗    ██╔════╝    ██╔══██╗',         
+\ '███████║    █████╗      ██████╔╝    █████╗      ██████╔╝',         
+\ '██╔══██║    ██╔══╝      ██╔══██╗    ██╔══╝      ██╔══██╗',         
+\ '██║  ██║    ███████╗    ██████╔╝    ███████╗    ██║  ██║',         
+\ '╚═╝  ╚═╝    ╚══════╝    ╚═════╝     ╚══════╝    ╚═╝  ╚═╝',         
+\]        
+
+"let g:dashboard_custom_header = [
+"\ '    )                                      (    ', 
+"\ ' ( /(                   (                  )\ ) ', 
+"\ ' )\())      (         ( )\       (        (()/( ', 
+"\ '((_)\       )\        )((_)      )\        /(_))', 
+"\ ' _((_)     ((_)      ((_)_      ((_)      (_))  ', 
+"\ '| || |     | __|      | _ )     | __|     | _ \ ', 
+"\ '| __ |     | _|       | _ \     | _|      |   / ', 
+"\ '|_||_|     |___|      |___/     |___|     |_|_\ ', 
+""\]
+
+
+
+
+
+
+
+
+
+
 
 
