@@ -338,7 +338,7 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 " if !has('gui_running')
 "   set t_Co=256
 " endif
-" set noshowmode
+set noshowmode
 
 " let g:lightline = {
 "   \ 'colorscheme': 'wombat',
