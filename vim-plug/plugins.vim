@@ -3,13 +3,20 @@ Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 
-"status bar
-Plug 'maximbaz/lightline-ale'
-Plug 'itchyny/lightline.vim'
+"status line and bufferline
+" Plug 'maximbaz/lightline-ale'
+" Plug 'itchyny/lightline.vim'
+Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+Plug 'kyazdani42/nvim-web-devicons' " lua
+Plug 'ryanoasis/vim-devicons' " vimscript
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'romgrk/barbar.nvim'
 
 " Themes
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
+Plug 'romgrk/doom-one.vim'
+
 
 "Tree
 Plug 'scrooloose/NERDTree'
@@ -17,7 +24,6 @@ Plug 'scrooloose/NERDTree'
 " typing 
 Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
-
 " tmux
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
@@ -38,6 +44,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+
+
 
 " autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -78,3 +89,7 @@ Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
+Plug 'tpope/vim-scriptease'
+
+"treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

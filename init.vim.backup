@@ -35,7 +35,6 @@ let g:monokai_term_italic = 1
 let g:monokai_gui_italic = 1
 
 set t_Co=256
-let g:doom_one_terminal_colors = v:true
 
 "hi Search ctermbg=13 "color de resaltado de busqueda
 "hi Search ctermfg=0
@@ -89,22 +88,15 @@ let g:auto_save = 0
 let g:auto_save_silent = 0
 
 "FZF
-" map ff :Files<CR>
-" map fb :Buffers<CR>
-" map fc :Commands<CR>
-" map fco :Commits<CR>
-" map fh :History/<CR>
+nmap ff :Files<CR>
+nmap fb :Buffers<CR>
+nmap fc :Commands<CR>
+nmap fco :Commits<CR>
+nmap fh :History/<CR>
 "Ranger
-" map ra :Ranger<CR>
+nmap ra :Ranger<CR>
 nmap q :x <CR>
 nmap Q :q! <CR>
-
-if !has('nvim')
-  echo "⚠ Configuration is invalid outside Neovim"
-endif
-set shell=/usr/bin/zsh
-
-
 
 
 
@@ -144,12 +136,12 @@ let g:vimtex_view_method = 'zathura'
 " endfunction
 
 "----------------configuration de NERDTree
-""abrir neerd tree
-"nnoremap nee :NERDTree<CR>
-"nnoremap nec :NERDTreeClose<CR>
-"" Exit Vim if NERDTree is the only window left.
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-"    \ quit | endif
+"abrir neerd tree
+nnoremap nee :NERDTree<CR>
+nnoremap nec :NERDTreeClose<CR>
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 "----------------configuration Coc
 "instalacion
@@ -322,6 +314,19 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 "nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 " mis configuraciones
 
+"----------------configuration syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+"----------------configuration vim-rainbow
+"au FileType c,cpp,objc,objcpp,py,tex call rainbow#load()
+"let g:rainbow_active = 1
+
 "----------------configuration emmet
 let g:user_emmet_mode='n'    "only enable normal mode functions.
 let g:user_emmet_mode='inv'  "enable all functions, which is equal to
@@ -329,39 +334,33 @@ let g:user_emmet_mode='a'    "enable all function in all mode.
 
 "----------------configuration airline
 "let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline#extensions#tabline#formatter = 'default'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'default'
 
 "----------------configuration lightline
-" set laststatus=2
-" if !has('gui_running')
-"   set t_Co=256
-" endif
-" set noshowmode
+set laststatus=2
+if !has('gui_running')
+  set t_Co=256
+endif
+set noshowmode
 
-" let g:lightline = {
-"   \ 'colorscheme': 'wombat',
-"   \ 'active': {
-"   \   'left': [ [ 'mode', 'paste' ],
-"   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-"   \ },
-"   \ 'component_function': {
-"   \   'gitbranch': 'FugitiveHead'
-"   \ },
-"   \ }
+let g:lightline = {
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \ },
+      \ }
 
+function! LightlineFilename()
+  return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
+        \ &filetype ==# 'unite' ? unite#get_status_string() :
+        \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
+        \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
+endfunction
 
-" function! LightlineFilename()
-"   return &filetype ==# 'vimfiler' ? vimfiler#get_status_string() :
-"         \ &filetype ==# 'unite' ? unite#get_status_string() :
-"         \ &filetype ==# 'vimshell' ? vimshell#get_status_string() :
-"         \ expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-" endfunction
-
-" let g:unite_force_overwrite_statusline = 0
-" let g:vimfiler_force_overwrite_statusline = 0
-" let g:vimshell_force_overwrite_statusline = 0
+let g:unite_force_overwrite_statusline = 0
+let g:vimfiler_force_overwrite_statusline = 0
+let g:vimshell_force_overwrite_statusline = 0
 
 "-----------------configuration multiples cursores
 let g:multi_cursor_use_default_mapping=1
@@ -399,10 +398,10 @@ augroup END
 
 autocmd vim-colors-xcode ColorScheme * hi Comment        cterm=italic gui=italic
 autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
-colorscheme xcodedark
+colorscheme xcodedarkhc
 
 "------------------indentLine
-" let g:indentLine_char = '┊'
+let g:indentLine_char = '┊'
 
 
 "------------------tex conceal
@@ -415,18 +414,18 @@ colorscheme xcodedark
 
 
 "-------------------which key
-"set notimeout
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>
-nnoremap <silent> <localleader> :<c-u>WhichKey  '<Space>'<CR>
-" vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <localleader> :<c-u>WhichKey  ','<CR>
+
+vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
 " Create map to add keys to
 let g:which_key_map =  {}
 " Define a separator
 let g:which_key_sep = '→'
-set timeoutlen=300
+set timeoutlen=0
 
 
 " Not a fan of floating windows for this
@@ -445,7 +444,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 
 " Single mappings
 let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
-let g:which_key_map['e'] = [ ':NvimTreeToggle'       , 'explorer' ]
+let g:which_key_map['e'] = [ ':CocCommand explorer'       , 'explorer' ]
 let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
 let g:which_key_map['r'] = [ ':Ranger'                    , 'ranger' ]
@@ -453,8 +452,6 @@ let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
 let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
 let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
 let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
-
-
 
 " s is for search
 let g:which_key_map.s = {
@@ -484,54 +481,29 @@ let g:which_key_map.s = {
       \ 'y' : [':Filetypes'    , 'file types'],
       \ 'z' : [':FZF'          , 'FZF'],
       \ }
-let g:which_key_map.t = {
-      \ 'name' : '+terminal' ,
-      \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
-      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
-      \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
-      \ 'n' : [':FloatermNew node'                              , 'node'],
-      \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
-      \ 'p' : [':FloatermNew python'                            , 'python'],
-      \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
-      \ 't' : [':FloatermToggle'                                , 'toggle'],
-      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
-      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
-      \ }
+
+" Register which key map
+"call which_key#register('<Space>', "g:which_key_map")
+" pestañas
+nmap <C-Right> :tabnext <CR>
+nmap <C-Left> :tabprevious <CR>
+nmap <C-k> :tabnext <CR>
+nmap <C-j> :tabprevious <CR>
 
 let g:which_key_map.b = {
   \ 'name'  :   'buffers',
   \ 'n'    :[':tabnew'         , 'newtab'],
   \ 'b'    :[':Buffers'       , 'buffers'],
-  \ 'c'    :[':BufferClose', 'buffer close'],
-  \ '1'    :['BufferGoto 1'            , 'pestaña 1'],
-  \ '2'    :['BufferGoto 2'            , 'pestaña 2'],
-  \ '3'    :['BufferGoto 3'            , 'pestaña 3'],
-  \ '4'    :['BufferGoto 4'            , 'pestaña 4'],
-  \ '5'    :['BufferGoto 5'            , 'pestaña 5'],
-  \ '6'    :['BufferGoto 6'            , 'pestaña 6'],
-  \ '7'    :['BufferGoto 7'            , 'pestaña 7'],
-  \ '8'    :['BufferGoto 8'            , 'pestaña 8'],
-  \ '9'    :['BufferGoto 9'            , 'pestaña 9'],
-  \ '10'    :['BufferGoto 10'            , 'pestaña 10'],
-  \ '11'    :['BufferGoto 11'            , 'pestaña 11'],
-  \ '12'    :['BufferGoto 12'            , 'pestaña 12'],
-  \ '13'    :['BufferGoto 13'            , 'pestaña 13'],
-  \ '14'    :['BufferGoto 14'            , 'pestaña 14'],
-  \ '15'    :['BufferGoto 15'            , 'pestaña 15'],
-  \ '16'    :['BufferGoto 16'            , 'pestaña 16'],
-  \ '17'    :['BufferGoto 17'            , 'pestaña 17'],
-  \ '18'    :['BufferGoto 18'            , 'pestaña 18'],
-  \ '19'    :['BufferGoto 19'            , 'pestaña 19'],
+  \ '1'    :['1gt'            , 'pestaña 1'],
+  \ '2'    :['2gt'            , 'pestaña 2'],
+  \ '3'    :['3gt'            , 'pestaña 3'],
+  \ '4'    :['4gt'            , 'pestaña 4'],
+  \ '5'    :['5gt'            , 'pestaña 5'],
+  \ '6'    :['6gt'            , 'pestaña 6'],
+  \ '7'    :['7gt'            , 'pestaña 7'],
+  \ '8'    :['8gt'            , 'pestaña 8'],
+  \ '9'    :['9gt'            , 'pestaña 9'],
   \ }
-" Register which key map
-call which_key#register('<Space>', "g:which_key_map")
-
-" pestañas
-nmap <C-Right> :BufferNext <CR>
-nmap <C-k> :BufferNext <CR>
-nmap <C-Left> :BufferPrevious <CR>
-nmap <C-j> :BufferPrevious <CR>
 
 
 
@@ -548,6 +520,21 @@ let g:floaterm_width=0.8
 let g:floaterm_height=0.8
 let g:floaterm_wintitle=0
 let g:floaterm_autoclose=1
+
+let g:which_key_map.t = {
+      \ 'name' : '+terminal' ,
+      \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
+      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
+      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
+      \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
+      \ 'n' : [':FloatermNew node'                              , 'node'],
+      \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
+      \ 'p' : [':FloatermNew python'                            , 'python'],
+      \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
+      \ 't' : [':FloatermToggle'                                , 'toggle'],
+      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
+      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+      \ }
 
 "--------------------dashboard
 let g:dashboard_default_executive ='clap'
@@ -574,132 +561,12 @@ let g:dashboard_custom_header = [
 
 
 
-let g:dashboard_default_executive ='telescope'
-nmap <Leader>ss :<C-u>SessionSave<CR>
-nmap <Leader>sl :<C-u>SessionLoad<CR>
-nnoremap <silent> <Leader>fh :DashboardFindHistory<CR>
-nnoremap <silent> <Leader>ff :DashboardFindFile<CR>
-nnoremap <silent> <Leader>tc :DashboardChangeColorscheme<CR>
-nnoremap <silent> <Leader>fa :DashboardFindWord<CR>
-nnoremap <silent> <Leader>fb :DashboardJumpMark<CR>
-nnoremap <silent> <Leader>cn :DashboardNewFile<CR>
 
 
 
 
 
-"------------------treesiter
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  highlight = {
-    enable = true,
-    custom_captures = {
-      -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-      ["foo.bar"] = "Identifier",
-    },
-  },
-}
-EOF
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "gnn",
-      node_incremental = "grn",
-      scope_incremental = "grc",
-      node_decremental = "grm",
-    },
-  },
-}
-EOF
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  indent = {
-    enable = true
-  }
-}
-EOF
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
 
 
-"---------------------------galaxy
-function! ConfigStatusLine()
-  lua require('plugins.status-line')
-endfunction
-
-augroup status_line_init
-  autocmd!
-  autocmd VimEnter * call ConfigStatusLine()
-augroup END
 
 
-"----------------------------barbar
-"options
-" NOTE: If barbar's option dict isn't created yet, create it
-let bufferline = get(g:, 'bufferline', {})
-
-" Enable/disable animations
-let bufferline.animation = v:true
-
-" Enable/disable auto-hiding the tab bar when there is a single buffer
-let bufferline.auto_hide = v:true
-
-" Enable/disable current/total tabpages indicator (top right corner)
-let bufferline.tabpages = v:true
-
-" Enable/disable close button
-let bufferline.closable = v:true
-
-" Enables/disable clickable tabs
-"  - left-click: go to buffer
-"  - middle-click: delete buffer
-let bufferline.clickable = v:true
-
-" Enable/disable icons
-" if set to 'numbers', will show buffer index in the tabline
-" if set to 'both', will show buffer index and icons in the tabline
-let bufferline.icons = v:true
-
-" Sets the icon's highlight group.
-" If false, will use nvim-web-devicons colors
-let bufferline.icon_custom_colors = v:false
-
-" Configure icons on the bufferline.
-let bufferline.icon_separator_active = '▎'
-let bufferline.icon_separator_inactive = '▎'
-let bufferline.icon_close_tab = ''
-let bufferline.icon_close_tab_modified = '●'
-
-" Sets the maximum padding width with which to surround each tab.
-let bufferline.maximum_padding = 1
-
-" Sets the maximum buffer name length.
-let bufferline.maximum_length = 30
-
-" If set, the letters for each buffer in buffer-pick mode will be
-" assigned based on their name. Otherwise or in case all letters are
-" already assigned, the behavior is to assign letters in order of
-" usability (see order below)
-let bufferline.semantic_letters = v:true
-
-" New buffer letters are assigned in this order. This order is
-" optimal for the qwerty keyboard layout but might need adjustement
-" for other layouts.
-let bufferline.letters =
-  \ 'asdfjkl;ghnmxcvbziowerutyqpASDFJKLGHNMXCVBZIOWERUTYQP'
-
-" Sets the name of unnamed buffers. By default format is "[Buffer X]"
-" where X is the buffer number. But only a static string is accepted here.
-let bufferline.no_name_title = v:null
-
-augroup disable_buffer_nav_in_defx
-  autocmd!
-  autocmd FileType defx nnoremap <silent> <buffer> H <nop>
-  autocmd FileType defx nnoremap <silent> <buffer> L <nop>
-augroup END
-
-
-set secure
-set noshowcmd
