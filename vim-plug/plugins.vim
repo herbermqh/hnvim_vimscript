@@ -16,7 +16,11 @@ Plug 'romgrk/barbar.nvim'
 Plug 'morhetz/gruvbox'
 Plug 'shinchu/lightline-gruvbox.vim'
 Plug 'romgrk/doom-one.vim'
-
+Plug 'marko-cerovac/material.nvim'
+Plug 'shaunsingh/moonlight.nvim'
+Plug 'folke/tokyonight.nvim'
+Plug 'navarasu/onedark.nvim'
+Plug 'sainnhe/edge'
 
 "Tree
 Plug 'scrooloose/NERDTree'
@@ -47,7 +51,7 @@ Plug 'rbgrouleff/bclose.vim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-
+Plug 'kyazdani42/nvim-tree.lua'
 
 
 " autocomplete
@@ -61,7 +65,7 @@ Plug 'tyewang/vimux-jest-test'
 Plug 'janko-m/vim-test'
 
 " IDE
-Plug 'frazrepo/vim-rainbow' " -colorea parentesis
+Plug 'frazrepo/vim-rainbow' "-colorea parentesis
 "Plug 'luochen1990/rainbow'
 Plug 'micha/vim-colors-solarized'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
