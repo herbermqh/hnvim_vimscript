@@ -72,9 +72,8 @@ set autoindent
 set smartindent
 set cindent
 "---------------busqueda 
-
 "---------------variables
-"« [texto] vim:set {opción} = {valor} ...: [texto] »
+"---------------variables
 
 "---------------macros
 "« map <F5> gewi{<Esc>ea}<Esc> »
@@ -120,8 +119,10 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'tex']
 "configuracion general
 "nmap <F12> <esc>:w!<cr>\ll "compilar LaTeX
 nmap <F8> <esc>]sz= "busca error ortografico 
-imap <F10> <esc>:w!<cr> "guardar documento TeX
-map <F10> <esc>:w!<cr> "guarda y se va al main TeX
+imap <F10> <esc>:w!<Enter> "guardar documento TeX
+nmap <F10> <esc>:w!<Enter> 
+vmap <F10> <esc>:w!<Enter> 
+"guarda y se va al main TeX
 ":imap <F6> <esc>:w!<cr><C-W>W
 "personalizacion de macros
 
@@ -154,8 +155,6 @@ let g:vimtex_compiler_latexmk = {
     \   '-interaction=nonstopmode',
     \ ],
     \}
-
-
 
 let g:vimtex_syntax_enabled = 1
 let g:vimtex_quickfix_open_on_warning = 0
@@ -476,7 +475,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 " Single mappings
 let g:which_key_map['/'] = [ '<Plug>NERDCommenterToggle'  , 'comment' ]
 let g:which_key_map['e'] = [ ':NvimTreeToggle'       , 'explorer' ]
-let g:which_key_map['f'] = [ ':Files'                     , 'search files' ]
+let g:which_key_map['f'] = [ ':Telescope find_files'                     , 'search files' ]
 let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
 let g:which_key_map['r'] = [ ':Ranger'                    , 'ranger' ]
 let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
@@ -493,7 +492,7 @@ let g:which_key_map.s = {
       \ ';' : [':Commands'     , 'commands'],
       \ 'a' : [':Ag'           , 'text Ag'],
       \ 'b' : [':BLines'       , 'current buffer'],
-      \ 'B' : [':Buffers'      , 'open buffers'],
+      \ 'B' : [':Telescope buffers'      , 'open buffers'],
       \ 'c' : [':Commits'      , 'commits'],
       \ 'C' : [':BCommits'     , 'buffer commits'],
       \ 'f' : [':Files'        , 'files'],
@@ -532,7 +531,7 @@ let g:which_key_map.t = {
 let g:which_key_map.b = {
   \ 'name'  :   'buffers',
   \ 'n'    :[':tabnew'         , 'newtab'],
-  \ 'b'    :[':Buffers'       , 'buffers'],
+  \ 'b'    :[':Telescope buffers'       , 'buffers'],
   \ 'c'    :[':BufferClose', 'buffer close'],
   \ '1'    :['BufferGoto 1'            , 'pestaña 1'],
   \ '2'    :['BufferGoto 2'            , 'pestaña 2'],
@@ -823,8 +822,8 @@ let g:nvim_tree_icons = {
     \   }
     \ }
 
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
+" nnoremap <leader>r :NvimTreeRefresh<CR>
+" nnoremap <leader>n :NvimTreeFindFile<CR>
 " NvimTreeOpen and NvimTreeClose are also available if you need them
 
 set termguicolors " this variable must be enabled for colors to be applied properly
@@ -843,6 +842,7 @@ lua<<EOF
       -- default mappings
       ["<CR>"]           = tree_cb("edit"),
       ["o"]              = tree_cb("edit"),
+      ["<Right>"]        = tree_cb("edit"),
       ["<2-LeftMouse>"]  = tree_cb("edit"),
       ["<2-RightMouse>"] = tree_cb("cd"),
       ["<C-]>"]          = tree_cb("cd"),
@@ -852,6 +852,7 @@ lua<<EOF
       ["<"]              = tree_cb("prev_sibling"),
       [">"]              = tree_cb("next_sibling"),
       ["<BS>"]           = tree_cb("close_node"),
+      ["<Left>"]         = tree_cb("close_node"),
       ["<S-CR>"]         = tree_cb("close_node"),
       ["<Tab>"]          = tree_cb("preview"),
       ["I"]              = tree_cb("toggle_ignored"),
