@@ -878,5 +878,5 @@ EOF
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set secure
-set noshowcmd
+" set secure
+" set noshowcmd
