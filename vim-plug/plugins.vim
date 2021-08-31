@@ -29,7 +29,7 @@ Plug 'alvan/vim-closetag'
 Plug 'tpope/vim-surround'
 " tmux
 Plug 'benmills/vimux'
-Plug 'christoomey/vim-tmux-navigator'
+" Plug 'christoomey/vim-tmux-navigator'
 
 "LaTeX
 Plug 'herbermqh/vim-latex'
