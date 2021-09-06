@@ -568,8 +568,8 @@ let g:which_key_map.fh = 'which_key_ignore'
 
 " pestañas
 nmap <C-Right> :BufferNext <CR>
-nmap <C-k> :BufferNext <CR>
 nmap <C-Left> :BufferPrevious <CR>
+nmap <C-k> :BufferNext <CR>
 nmap <C-j> :BufferPrevious <CR>
 
 
