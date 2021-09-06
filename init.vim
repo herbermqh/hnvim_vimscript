@@ -103,7 +103,7 @@ nmap Q :q! <CR>
 if !has('nvim')
   echo "⚠ Configuration is invalid outside Neovim"
 endif
-set shell=/usr/bin/zsh
+" set shell=/usr/bin/zsh
 
 
 
