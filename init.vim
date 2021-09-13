@@ -192,7 +192,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -741,7 +741,7 @@ augroup END
 
 
 "---------------------nvimtreetoggle
-let g:nvim_tree_side = 'left' "left by default
+let g:nvim_tree_side = 'right' "left by default
 let g:nvim_tree_width = 40 "30 by default
 let g:nvim_tree_ignore = [ '.git', 'node_modules', '.cache' ] "empty by default
 let g:nvim_tree_gitignore = 1 "0 by default
