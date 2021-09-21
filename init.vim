@@ -10,131 +10,6 @@ else
   call plug#end()
 endif
 
-"CONFIGURACIONES GENERALES DE VIM
-"---------------funcionamiento general
-"detecta tipo de archivo 
-filetype plugin on
-"determina tipo de archivo
-filetype on
-let g:Imap_UsePlaceHolders = 0
-set mouse=a
-
-runtime plugins/spellfile.vim
-set spell spelllang=es,en_us 
-set spellfile=~/.vim/dict.add
-set nospell
-"---------------visualizacion
-set showcmd
-"ver numero de linea
-set number
-set relativenumber
-set showmatch
-set nocompatible
-"colorear el sintaxis del codigo
-syntax on
-" let g:monokai_term_italic = 1
-" let g:monokai_gui_italic = 1
-
-set t_Co=256
-let g:doom_one_terminal_colors = v:true
-
-"hi Search ctermbg=13 "color de resaltado de busqueda
-"hi Search ctermfg=0
-
-"habilita transparencia
-set t_8f=\[[38;2;%lu;%lu;%lum 
-set t_8b=\[[48;2;%lu;%lu;%lum
-
-set termguicolors
-"color desert
-hi! Normal ctermbg=NONE guibg=NONE
-hi! NonText ctermbg=NONE guibg=NONE
-
-"color tabs
-hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
-hi TabLine ctermfg=Blue ctermbg=Yellow
-hi TabLineSel ctermfg=Red ctermbg=Yellow
-hi Title ctermfg=LightBlue ctermbg=Magenta
-
-"---------------sangrado y saltos de lineas
-"sangria automatica
-filetype indent on
-"sangria 
-set sw=2
-"labels
-set iskeyword+=:
-set cursorcolumn
-set cursorline
-set expandtab 
-set shiftwidth=2 
-set softtabstop=2
-set autoindent
-set smartindent
-set cindent
-set nowrap
-"---------------busqueda 
-"---------------variables
-"---------------variables
-
-"---------------macros
-"« map <F5> gewi{<Esc>ea}<Esc> »
-nmap <F12> <Esc>:VimtexCompile<CR> 
-"duplicar linea
-map ld :t.<CR>$
-"poner en mayuscula la primera Letra
-map <A-U> gewvgUwb
-map <A-u> gewvguwb
-
-"autoguardado
-let g:auto_save = 0
-let g:auto_save_silent = 0
-
-"FZF
-" map ff :Files<CR>
-" map fb :Buffers<CR>
-" map fc :Commands<CR>
-" map fco :Commits<CR>
-" map fh :History/<CR>
-"Ranger
-" map ra :Ranger<CR>
-nmap q :x <CR>
-nmap Q :q! <CR>
-
-if !has('nvim')
-  echo "⚠ Configuration is invalid outside Neovim"
-endif
-" set shell=/usr/bin/zsh
-
-
-
-
-
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'tex']
-
-
-"CONFIGURACIONES DE PLUGING
-"let g:livepreview_previewer = ''
-"let g:livepreview_engine = 'your_engine' . ' [options]'
-
-"----------------latex-suite
-"configuracion general
-"nmap <F12> <esc>:w!<cr>\ll "compilar LaTeX
-nmap <F8> <esc>]sz= "busca error ortografico 
-imap <F10> <esc>:w!<Enter> "guardar documento TeX
-nmap <F10> <esc>:w!<Enter> 
-vmap <F10> <esc>:w!<Enter> 
-"guarda y se va al main TeX
-":imap <F6> <esc>:w!<cr><C-W>W
-"personalizacion de macros
-
-let g:tex_flavor='latex'
-set grepprg=grep\ -nH\ $*
-let g:Tex_DefaultTargetFormat='pdf'
-let g:Tex_CompileRule_pdf = 'latexmk -interaction=nonstopmode -pdflatex -shell-escape $*' "sin interaccion (articles)
-"let g:Tex_CompileRule_pdf = 'latexmk  -pdflatex -shell-escape $*' "con interaccion en consolo (books)
-imap<C-j><Plug>IMAP_JumpForward
-
-
 "----------------configuration vimtex
 let g:vimtex_view_general_viewer = 'zathura'
 let g:vimtex_view_general_options = '--unique @pdf\#src:@line@tex'
@@ -429,7 +304,7 @@ autocmd vim-colors-xcode ColorScheme * hi SpecialComment cterm=italic gui=italic
 let g:edge_style = 'neon'
 let g:edge_enable_italic = 1
 let g:edge_disable_italic_comment = 1
-colorscheme edge
+colorscheme onehalfdark
 
 
 "------------------indentLine
@@ -781,9 +656,9 @@ let g:nvim_tree_window_picker_exclude = {
 let g:nvim_tree_special_files = { 'README.md': 1, 'Makefile': 1, 'MAKEFILE': 1 } " List of filenames that gets highlighted with NvimTreeSpecialFile
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
-    \ 'folders': 0,
-    \ 'files': 0,
-    \ 'folder_arrows': 0,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
     \ }
 "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 "1 by default, notice that if 'files' is 1, it will only display
@@ -876,3 +751,130 @@ EOF
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " set secure
 " set noshowcmd
+"
+"CONFIGURACIONES GENERALES DE VIM
+"---------------funcionamiento general
+"detecta tipo de archivo 
+filetype plugin on
+"determina tipo de archivo
+filetype on
+let g:Imap_UsePlaceHolders = 0
+set mouse=a
+
+runtime plugins/spellfile.vim
+set spell spelllang=es,en_us 
+set spellfile=~/.vim/dict.add
+set nospell
+"---------------visualizacion
+set showcmd
+"ver numero de linea
+set number
+set relativenumber
+set showmatch
+set nocompatible
+"colorear el sintaxis del codigo
+syntax on
+" let g:monokai_term_italic = 1
+" let g:monokai_gui_italic = 1
+
+set t_Co=256
+let g:doom_one_terminal_colors = v:true
+
+"hi Search ctermbg=13 "color de resaltado de busqueda
+"hi Search ctermfg=0
+
+"habilita transparencia
+set t_8f=\[[38;2;%lu;%lu;%lum 
+set t_8b=\[[48;2;%lu;%lu;%lum
+
+" set termguicolos
+""color desert
+hi! Normal ctermbg=NONE guibg=NONE
+" hi Normal ctermbg=NONE guibg=000000
+hi! NonText ctermbg=NONE guibg=NONE
+
+"color tabs
+hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
+hi TabLine ctermfg=Blue ctermbg=Yellow
+hi TabLineSel ctermfg=Red ctermbg=Yellow
+hi Title ctermfg=LightBlue ctermbg=Magenta
+
+"---------------sangrado y saltos de lineas
+"sangria automatica
+filetype indent on
+"sangria 
+set sw=2
+"labels
+set iskeyword+=:
+set cursorcolumn
+set cursorline
+set expandtab 
+set shiftwidth=2 
+set softtabstop=2
+set autoindent
+set smartindent
+set cindent
+set nowrap
+"---------------busqueda 
+"---------------variables
+"---------------variables
+
+"---------------macros
+"« map <F5> gewi{<Esc>ea}<Esc> »
+nmap <F12> <Esc>:VimtexCompile<CR> 
+"duplicar linea
+map ld :t.<CR>$
+"poner en mayuscula la primera Letra
+map <A-U> gewvgUwb
+map <A-u> gewvguwb
+
+"autoguardado
+let g:auto_save = 0
+let g:auto_save_silent = 0
+
+"FZF
+" map ff :Files<CR>
+" map fb :Buffers<CR>
+" map fc :Commands<CR>
+" map fco :Commits<CR>
+" map fh :History/<CR>
+"Ranger
+" map ra :Ranger<CR>
+nmap q :x <CR>
+nmap Q :q! <CR>
+
+if !has('nvim')
+  echo "⚠ Configuration is invalid outside Neovim"
+endif
+" set shell=/usr/bin/zsh
+
+
+
+
+
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'tex']
+
+
+"CONFIGURACIONES DE PLUGING
+"let g:livepreview_previewer = ''
+"let g:livepreview_engine = 'your_engine' . ' [options]'
+
+"----------------latex-suite
+"configuracion general
+"nmap <F12> <esc>:w!<cr>\ll "compilar LaTeX
+nmap <F8> <esc>]sz= "busca error ortografico 
+imap <F10> <esc>:w!<Enter> "guardar documento TeX
+nmap <F10> <esc>:w!<Enter> 
+vmap <F10> <esc>:w!<Enter> 
+"guarda y se va al main TeX
+":imap <F6> <esc>:w!<cr><C-W>W
+"personalizacion de macros
+
+let g:tex_flavor='latex'
+set grepprg=grep\ -nH\ $*
+let g:Tex_DefaultTargetFormat='pdf'
+let g:Tex_CompileRule_pdf = 'latexmk -interaction=nonstopmode -pdflatex -shell-escape $*' "sin interaccion (articles)
+"let g:Tex_CompileRule_pdf = 'latexmk  -pdflatex -shell-escape $*' "con interaccion en consolo (books)
+imap<C-j><Plug>IMAP_JumpForward
+
+

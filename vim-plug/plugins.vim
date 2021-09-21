@@ -20,7 +20,8 @@ Plug 'shaunsingh/moonlight.nvim'
 Plug 'folke/tokyonight.nvim'
 Plug 'navarasu/onedark.nvim'
 Plug 'sainnhe/edge'
-
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'arcticicestudio/nord-vim'
 "Tree
 Plug 'scrooloose/NERDTree'
 
