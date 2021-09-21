@@ -312,11 +312,11 @@ colorscheme onehalfdark
 
 
 "------------------tex conceal
-"let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
-"let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
-"let g:tex_conceal_frac=1
-"set conceallevel=2
-"let g:tex_conceal="abdgm"
+let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
+let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
+let g:tex_conceal_frac=1
+set conceallevel=2
+let g:tex_conceal="abdgm"
 
 
 
@@ -441,12 +441,6 @@ let g:which_key_map.fb = 'which_key_ignore'
 let g:which_key_map.ff = 'which_key_ignore'
 let g:which_key_map.fh = 'which_key_ignore'
 
-" pestañas
-nmap <C-Right> :BufferNext <CR>
-nmap <C-Left> :BufferPrevious <CR>
-nmap <C-k> :BufferNext <CR>
-nmap <C-j> :BufferPrevious <CR>
-
 
 
 "------------------floaterm
@@ -466,25 +460,25 @@ let g:floaterm_autoclose=1
 "--------------------dashboard
 let g:dashboard_default_executive ='clap'
 
-let g:dashboard_custom_header = [
-\ '██╗  ██╗    ███████╗    ██████╗     ███████╗    ██████╗ ', 
-\ '██║  ██║    ██╔════╝    ██╔══██╗    ██╔════╝    ██╔══██╗',         
-\ '███████║    █████╗      ██████╔╝    █████╗      ██████╔╝',         
-\ '██╔══██║    ██╔══╝      ██╔══██╗    ██╔══╝      ██╔══██╗',         
-\ '██║  ██║    ███████╗    ██████╔╝    ███████╗    ██║  ██║',         
-\ '╚═╝  ╚═╝    ╚══════╝    ╚═════╝     ╚══════╝    ╚═╝  ╚═╝',         
-\]        
+" let g:dashboard_custom_header = [
+" \ '██╗  ██╗    ███████╗    ██████╗     ███████╗    ██████╗ ', 
+" \ '██║  ██║    ██╔════╝    ██╔══██╗    ██╔════╝    ██╔══██╗',         
+" \ '███████║    █████╗      ██████╔╝    █████╗      ██████╔╝',         
+" \ '██╔══██║    ██╔══╝      ██╔══██╗    ██╔══╝      ██╔══██╗',         
+" \ '██║  ██║    ███████╗    ██████╔╝    ███████╗    ██║  ██║',         
+" \ '╚═╝  ╚═╝    ╚══════╝    ╚═════╝     ╚══════╝    ╚═╝  ╚═╝',         
+" \]        
 
-"let g:dashboard_custom_header = [
-"\ '    )                                      (    ', 
-"\ ' ( /(                   (                  )\ ) ', 
-"\ ' )\())      (         ( )\       (        (()/( ', 
-"\ '((_)\       )\        )((_)      )\        /(_))', 
-"\ ' _((_)     ((_)      ((_)_      ((_)      (_))  ', 
-"\ '| || |     | __|      | _ )     | __|     | _ \ ', 
-"\ '| __ |     | _|       | _ \     | _|      |   / ', 
-"\ '|_||_|     |___|      |___/     |___|     |_|_\ ', 
-""\]
+let g:dashboard_custom_header = [
+\ '    )                                      (    ', 
+\ ' ( /(                   (                  )\ ) ', 
+\ ' )\())      (         ( )\       (        (()/( ', 
+\ '((_)\       )\        )((_)      )\        /(_))', 
+\ ' _((_)     ((_)      ((_)_      ((_)      (_))  ', 
+\ '| || |     | __|      | _ )     | __|     | _ \ ', 
+\ '| __ |     | _|       | _ \     | _|      |   / ', 
+\ '|_||_|     |___|      |___/     |___|     |_|_\ ', 
+\]
 
 
 
@@ -876,5 +870,11 @@ let g:Tex_DefaultTargetFormat='pdf'
 let g:Tex_CompileRule_pdf = 'latexmk -interaction=nonstopmode -pdflatex -shell-escape $*' "sin interaccion (articles)
 "let g:Tex_CompileRule_pdf = 'latexmk  -pdflatex -shell-escape $*' "con interaccion en consolo (books)
 imap<C-j><Plug>IMAP_JumpForward
+
+" pestañas
+nmap <C-Right> :BufferNext <CR>
+nmap <C-Left> :BufferPrevious <CR>
+nmap <C-k> :BufferNext <CR>
+nmap <C-j> :BufferPrevious <CR>
 
 

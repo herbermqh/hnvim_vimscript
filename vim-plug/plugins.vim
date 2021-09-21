@@ -37,7 +37,7 @@ Plug 'herbermqh/vim-latex'
 Plug 'lervag/vimtex'
 "Plug 'herbermqh/vimtex'
 "Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-"Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
+" "Plug 'KeitaNakamura/tex-conceal.vim', {'for': 'tex'} " for VimPlug
 
 " no ordenado
 "Plug 'vim-airline/vim-airline'
