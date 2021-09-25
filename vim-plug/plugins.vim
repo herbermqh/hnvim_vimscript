@@ -22,6 +22,7 @@ Plug 'navarasu/onedark.nvim'
 Plug 'sainnhe/edge'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'arcticicestudio/nord-vim'
+Plug 'dylanaraps/wal'
 "Tree
 Plug 'scrooloose/NERDTree'
 
@@ -76,6 +77,7 @@ Plug 'arzg/vim-colors-xcode'
 Plug 'windwp/nvim-autopairs'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-obsession'
 
 "Git
 Plug 'tpope/vim-fugitive'
@@ -93,7 +95,7 @@ Plug 'kdheepak/lazygit.nvim', { 'branch': 'nvim-v0.4.3' }
 Plug 'glepnir/dashboard-nvim'
 Plug 'liuchengxu/vim-clap'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
-Plug 'tpope/vim-scriptease'
+Plug 'tpope/vim-scriptease' "para hacer complemetos vim
 
 "treesitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}

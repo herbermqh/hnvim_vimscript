@@ -315,7 +315,7 @@ colorscheme onehalfdark
 let g:tex_superscripts= "[0-9a-zA-W.,:;+-<>/()=]"
 let g:tex_subscripts= "[0-9aehijklmnoprstuvx,+-/().]"
 let g:tex_conceal_frac=1
-set conceallevel=2
+set conceallevel=1
 let g:tex_conceal="abdgm"
 
 
@@ -876,5 +876,12 @@ nmap <C-Right> :BufferNext <CR>
 nmap <C-Left> :BufferPrevious <CR>
 nmap <C-k> :BufferNext <CR>
 nmap <C-j> :BufferPrevious <CR>
+
+
+
+
+inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
+nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+
 
 
