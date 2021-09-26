@@ -361,6 +361,8 @@ let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
 
 
 
+
+
 " s is for search
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
@@ -403,7 +405,6 @@ let g:which_key_map.t = {
       \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
-
 let g:which_key_map.b = {
   \ 'name'  :   'buffers',
   \ 'n'    :[':tabnew'         , 'newtab'],
@@ -440,8 +441,6 @@ let g:which_key_map.fa = 'which_key_ignore'
 let g:which_key_map.fb = 'which_key_ignore'
 let g:which_key_map.ff = 'which_key_ignore'
 let g:which_key_map.fh = 'which_key_ignore'
-
-
 
 "------------------floaterm
 let g:floaterm_keymap_toggle = '<F1>'
@@ -740,6 +739,11 @@ lua<<EOF
     }
 EOF
 
+"-----------------------------------ultisnips
+"cambia C-j por tab (saltos de posicion)
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -878,8 +882,7 @@ nmap <C-k> :BufferNext <CR>
 nmap <C-j> :BufferPrevious <CR>
 
 
-
-
+" para abrir inkscape
 inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
 nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
 
