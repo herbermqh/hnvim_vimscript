@@ -787,9 +787,9 @@ set t_8b=\[[48;2;%lu;%lu;%lum
 
 " set termguicolos
 ""color desert
-hi! Normal ctermbg=NONE guibg=NONE
+" hi! Normal ctermbg=NONE guibg=NONE
 " hi Normal ctermbg=NONE guibg=000000
-hi! NonText ctermbg=NONE guibg=NONE
+" hi! NonText ctermbg=NONE guibg=NONE
 
 "color tabs
 hi TabLineFill ctermfg=LightGreen ctermbg=DarkGreen
